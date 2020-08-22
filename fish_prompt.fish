@@ -25,6 +25,11 @@ function fish_prompt
   set -l directory_color  (set_color $fish_color_quote 2> /dev/null; or set_color brown)
   set -l repository_color (set_color $fish_color_cwd 2> /dev/null; or set_color green)
 
+  if test -n "$container"
+    set success_color (set_color magenta)
+    set fish "⬢ "
+  end
+
   if test $last_command_status -eq 0
     echo -n -s $success_color $fish $normal_color
   else
